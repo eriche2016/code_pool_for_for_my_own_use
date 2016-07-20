@@ -1,1 +1,1 @@
-#torchnet code from torchnet[https://github.com/torchnet/torchnet]
+#torchnet code from [torchnet](https://github.com/torchnet/torchnet)
