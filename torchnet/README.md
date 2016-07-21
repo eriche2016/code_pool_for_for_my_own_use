@@ -29,4 +29,29 @@ Torchnet implements 5 main types of abstractions:
       - PrecisionMeter: Precision at threshold
       - RecallMeter: Recall at threshold.
       - TimeMeter: Elapsed time. 
-  - Log: Provides `Log`s for logging experiments:(1) `Log` and (2) `RemoteLog`, both output log information as raw text(to a file or stdout) and as `JSON`.   
+  - Log: Provides `Log`s for logging experiments:(1) `Log` and (2) `RemoteLog`, both output log information as raw text(to a file or stdout) and as `JSON`.  
+
+
+## Installation
+
+Please install *torch* first, following instructions on
+[torch.ch](http://torch.ch/docs/getting-started.html).  If *torch* is
+already installed, make sure you have an up-to-date version of
+[*argcheck*](https://github.com/torch/argcheck), otherwise you will get
+weird errors at runtime.
+
+Assuming *torch* is already installed, the *torchnet* core is only a set of
+lua files, so it is straightforward to install it with *luarocks*
+```
+luarocks install torchnet
+```
+
+To run the MNIST example from the paper, install the `mnist` package:
+```
+luarocks install mnist
+```
+
+`cd` into the installed `torchnet` package directory and run:
+```
+th example/mnist.lua
+```
