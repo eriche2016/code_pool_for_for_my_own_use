@@ -6,8 +6,17 @@ int add(int a, int b)
     return a + b;
 }
   
-int  main()
-{
+int  main(int argc, char *argv[])
+{  
+    /*
+    cout << "number of args: argc = " << argc << endl;
+    
+    for (int i = 0; i < argc; ++i) 
+    {
+        cout << "arg-" << i << ": " << argv[i] << "\n";
+    }
+    */
+
     int sum[10] = 
     {
      0, 0, 0, 0, 0, 0, 0, 0, 0, 0     
