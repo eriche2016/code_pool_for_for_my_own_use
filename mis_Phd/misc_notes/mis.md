@@ -44,10 +44,6 @@ now feel free to use your rar command
 ##install opencv without root privilege##
 1. download the latest version of opencv, ie `3.1.0`.
 ```
-git clone https://github.com/Itseez/opencv.git
-```
-or 
-```
 git clone https://github.com/opencv/opencv
 ```
 2. cd to `opencv`.
