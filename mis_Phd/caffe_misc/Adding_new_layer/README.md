@@ -34,6 +34,6 @@ virtual void Backward_cpu(const vector<Blob<Dtype>*>& top, const vector<bool>& p
 The `NOT_IMPLEMENTED` macro (defined in `common.hpp`) throws an error log saying "Not implemented yet". For examples, look at the accuracy layer (`accuracy_layer.hpp`) and threshold layer (`threshold_layer.hpp`) definitions.
 
 ## examples
- (1) consult `mil_layer.hpp`(https://github.com/eriche2016/caffe/blob/master/include/caffe/layers/mil_layer.hpp)
- (2) consult `mil_layer.cpp`(https://github.com/eriche2016/caffe/blob/master/src/caffe/layers/mil_layer.cpp)
- (3) declare parameters in `caffe.proto` in [here](https://github.com/eriche2016/caffe/blob/master/src/caffe/proto/caffe.proto#L408) and [here](https://github.com/eriche2016/caffe/blob/master/src/caffe/proto/caffe.proto#L1192)
+ (1) consult `mil_layer.hpp`(https://github.com/eriche2016/caffe/blob/master/include/caffe/layers/mil_layer.hpp)  
+ (2) consult `mil_layer.cpp`(https://github.com/eriche2016/caffe/blob/master/src/caffe/layers/mil_layer.cpp)  
+ (3) declare parameters in `caffe.proto` in [here](https://github.com/eriche2016/caffe/blob/master/src/caffe/proto/caffe.proto#L408) and [here](https://github.com/eriche2016/caffe/blob/master/src/caffe/proto/caffe.proto#L1192)  
