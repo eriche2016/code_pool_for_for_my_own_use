@@ -1,5 +1,5 @@
 #torchnet code from [torchnet](https://github.com/torchnet/torchnet)
-*torchnet* is a framework for [torch](http://torch.ch) which provides abstraction and boilerplate code for machine learning. It encourages modular programming and code re-use, which reduces chance of bugs, and it makes it straightforward to use asynchronous data loading and efficient multi-GPU computations. Torchnet is written in pure lua, making it easy to install.
+*torchnet* is a framework for [torch](http://torch.ch) which provides abstraction and boilerplate code(样板代码) for machine learning. It encourages modular programming and code re-use, which reduces chance of bugs, and it makes it straightforward to use asynchronous data loading and efficient multi-GPU computations. Torchnet is written in pure lua, making it easy to install.
 Torchnet encourages modular design that clearly separates the dataset, the data loading process, the model, the optimization, and performance measures. These different components are connected in an Engine that implements model training and evaluation.
 
 # Abstractions 
