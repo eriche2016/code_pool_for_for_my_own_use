@@ -7,7 +7,7 @@
    of patent rights can be found in the PATENTS file in the same directory.
 ]]--
 
-local tnt = require 'torchnet.env'
+local tnt = require 'torchnet.env'  -- just return an empty table
 local argcheck = require 'argcheck'
 local utils = require 'torchnet.utils'
 local doc = require 'argcheck.doc'
@@ -25,8 +25,8 @@ Most of the transformations are simple but can be [composed](#transform.compose)
 [merged](#transform.merge).
 ]]
 
-local transform = {}
-tnt.transform = transform
+local transform = {}  -- an empty table which will be used to store a set of transform operations 
+tnt.transform = transform  
 local unpack = unpack or table.unpack
 
 
@@ -49,7 +49,9 @@ transform.identity =
       end
    end
 
+-- compose function 
 transform.compose = argcheck{
+   -- global help info of this functions 
    doc = [[
 <a name = "transform.compose">
 #### transform.compose(@ARGP)
@@ -80,17 +82,18 @@ defining the following transformation:
 Note that transformations stored with keys `foo` and `4` are ignored.
 ```
 ]],
-   {name='transforms', type='table'},
-   call =
+   {name='transforms', type='table'}, -- rule of the args, transforms will be a table of transformation functions 
+   call =                           -- called in case of success
       function(transforms)
+         -- check whether each element of table transforms is a functions 
          for k,v in ipairs(transforms) do
             assert(type(v) == 'function', 'table of functions expected')
          end
-         transforms = utils.table.copy(transforms)
+         transforms = utils.table.copy(transforms)  -- just shallow copy table transforms
          return
-            function(z)
+            function(z)  -- apply table of tranforms methods to z sequentially
                for _, trans in ipairs(transforms) do
-                  z = trans(z)
+                  z = trans(z)   
                end
                return z
             end
