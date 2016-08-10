@@ -4,7 +4,7 @@ Torchnet encourages modular design that clearly separates the dataset, the data 
 
 # Abstractions 
 Torchnet implements 5 main types of abstractions:
-  - Dataset: provide two functions (1) `size()` returns the number of sampes in the dataset, (2) `get(idx)` function that returns the idx-th sample in the dataset. Below is an overview of all Datasets implemented in Torchnet. We can construct complex data loaders by plugging a dataset into another dataset that perform operations such as dataset concatenation, dataset splitting, batching of data, resampling of data, filtering of datset, and sample transformations.
+  - Dataset: provide two functions (1) `size()` returns the number of sampes in the dataset, (2) `get(idx)` function that returns the idx-th sample in the dataset. Below is an overview of all Datasets implemented in Torchnet. We can construct complex data loaders by plugging a dataset into another dataset that perform operations（复合操作） such as dataset concatenation（数据集合拼接）, dataset splitting（数据集划分：训练集，验证集，测试集）, batching of data（数据batching）, resampling of data（数据重采样）, filtering of datset（数据集过滤）, and sample transformations（样本变换， 例如对于图像，有cropping, flippping等等）.
     - BatchDataset: Merge samples into batches.
     - ConcatDataset: concatenates `K` datasets into one.
     - Coroutine BatchDataset:  BatchDataset that provides more control via coroutines.
@@ -14,7 +14,8 @@ Torchnet implements 5 main types of abstractions:
     - ShuffleDataset: Randomly shuffle samples in  `Dataset`.
     - SplitDataset: Splits dataset into disjoint sets.
     - TableDataset: Load samples from a Lua table.
-    - TransformDataset: Transform samples via closure. 
+    - TransformDataset: Transform samples via closure.   
+    *注：coroutine, 就是协同程序。一个具有多个协同程序的程序在任何时刻只能运行一个协同程序。（1）每个coroutine有自己私有的stack及局部变量。（2）同一时间只有一个coroutine在执行，无需对全局变量加锁。（3）顺序可控，完全由程序控制执行的顺序*
 
   - DatasetIterators: when performing training and testing, one iterates over all samples in the dataset and performs operations such as parameters updates(`Engines` will do) or accumulation of performance measures(`Meter`s do).  The `DatasetIterator` implements such behaviour with an optional data-dependent filtering(can be implemented via a `filter()` closure). In pratical, we want to perform the data loading asynchronously in multiple threads. The `ParallelDatasetIterator` provides this functionality, which has a predefined number of threads to load data from underlying dataset. If Given suffcient threads, the resulting data iterator always have a sample available for immediate return, which allows one to hide the loading and preprocessing of data for training and testing altogether. 
   - Engine: training/testing machine learning algorithm. This abstraction provides boilerplate logic necessary for training and testing of the models. An instance of `Engine` implements two functions: (1) `train()` that samples data, propagates the data through the model, computes the values of the loss, and updates the parameters. (2) `test()` function that samples the data, propagates the data through the model, and measures the quality of the resulting predictions.  Besides, An `Engine` provides a collection of hooks(implemented as closures)  to plugin experiment specific code. such as performance Meters.  The current Torchnet code contains two Engine implementations: (1) `SGDEngine` that implements training model via SGD and (2) an `OptimEngine` that implements training models via any of the optimizers implemented in the torch/optim package, which includes AdaGrad, Adam, ect. 
