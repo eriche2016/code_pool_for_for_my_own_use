@@ -1,5 +1,5 @@
 ###Shallow copy v.s Deep copy of the table
-[function utils.table.copy](https://github.com/eriche2016/code_pool_for_for_my_own_use/blob/master/torchnet/utils/table.lua#L27) just shallow copy a table to another table. Below is an example:
+(1) [function utils.table.copy](https://github.com/eriche2016/code_pool_for_for_my_own_use/blob/master/torchnet/utils/table.lua#L27) just shallow copy a table to another table. Below is an example:
 ```
 /_  __/__  ________/ /   |  Scientific computing for Lua.
   / / / _ \/ __/ __/ _ \  |  Type ? for help
