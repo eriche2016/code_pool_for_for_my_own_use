@@ -88,9 +88,9 @@ pkg-config --modversion opencv
 ```
 
 ### Install matlab in ubuntu###
-1. install matlab
-2. open matlab in ubuntu terminal  
-opt1: `matlab`, will open matlab gui 
-opt2: `matlab -nojvm`, cannot plot
-opt3: `matlab -nodestop`, will send plot if necessary
+1. install matlab  
+2. open matlab in ubuntu terminal    
+opt1: `matlab`, will open matlab gui   
+opt2: `matlab -nojvm`, cannot plot  
+opt3: `matlab -nodestop`, will send plot if necessary 
 
