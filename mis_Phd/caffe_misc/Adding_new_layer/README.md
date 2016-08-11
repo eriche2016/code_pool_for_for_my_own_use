@@ -37,4 +37,6 @@ The `NOT_IMPLEMENTED` macro (defined in `common.hpp`) throws an error log saying
  (1) consult `mil_layer.hpp`(https://github.com/eriche2016/caffe/blob/master/include/caffe/layers/mil_layer.hpp)  
  (2) consult `mil_layer.cpp`(https://github.com/eriche2016/caffe/blob/master/src/caffe/layers/mil_layer.cpp)  
  (3) declare parameters in `caffe.proto` in [here](https://github.com/eriche2016/caffe/blob/master/src/caffe/proto/caffe.proto#L408) and [here](https://github.com/eriche2016/caffe/blob/master/src/caffe/proto/caffe.proto#L1192)  
- (4) currently no test files
+ (4) currently no test files. If there is one, then:
+Because it takes so long to test all the layers. you can test a specific layer by doing the following:
+`make all && make test && build/test/test_all.testbin --gtest_filter='*LocalLayerTest*'"`
