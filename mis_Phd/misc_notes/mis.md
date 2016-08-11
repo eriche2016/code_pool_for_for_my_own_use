@@ -94,3 +94,12 @@ opt1: `matlab`, will open matlab gui
 opt2: `matlab -nojvm`, cannot plot  
 opt3: `matlab -nodesktop`, will send plot if necessary 
 
+### How to run matlab script without invoking the matlab interative mode###
+It seems that there is not one. All we can do is the following:  
+```bash
+matlab -nojvm -nosplash -r "myscript; exit"
+```
+or   
+```bash
+matlab -nodesktop -nosplash -nodisplay -r "run ./myscript.m ; quit;"
+```
