@@ -92,5 +92,5 @@ pkg-config --modversion opencv
 2. open matlab in ubuntu terminal    
 opt1: `matlab`, will open matlab gui   
 opt2: `matlab -nojvm`, cannot plot  
-opt3: `matlab -nodestop`, will send plot if necessary 
+opt3: `matlab -nodesktop`, will send plot if necessary 
 
