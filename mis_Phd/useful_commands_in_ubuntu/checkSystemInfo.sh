@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 clear
 SYSINFO=`head -n 1 /etc/issue`
