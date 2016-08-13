@@ -1,0 +1,11 @@
+# Assuming there is one number per line:
+sort file.txt | uniq -c
+
+# You can use the more verbose --count flag too with the GNU version, e.g., on Linux:
+sort <file> | uniq --count
+
+# This will print duplicate lines only, with counts
+sort file.txt | uniq -cd
+
+# or, with GNU long options (on Linux):
+sort file.txt | uniq --count --repeated
