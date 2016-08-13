@@ -19,3 +19,7 @@ find ./train2014 -maxdepth 1 -name "*.jpg"  > train2014.txt
 # note that we sometimes we donot want the leading base path, using command below
 find ./train2014 -maxdepth 1 -name "*.jpg"  -exec basename {} > train2014.txt \;
 # thus, the files
+# in train2014.txt:
+# COCO_train2014_000000526810.jpg
+# COCO_train2014_000000569433.jpg
+# ...
