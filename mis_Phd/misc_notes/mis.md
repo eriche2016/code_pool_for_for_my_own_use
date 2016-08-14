@@ -103,3 +103,14 @@ or
 ```bash
 matlab -nodesktop -nosplash -nodisplay -r "run ./myscript.m ; quit;"
 ```
+
+###shadowsocks端口被占用问题
+今天重启电脑，发现shadowsocks报出exception， 即端口被占用问题。不管上网的端口号是多少（我的是13039）， 网上搜说是
+1080端口被占用问题。 于是执行如下指令解决问题： 
+cmd 打开终端：
+>> netstat -ano|findstr 1080
+找到占用1080端口号的进程PID 2940
+然后kill掉，即解决了问题：
+>> taskkill -f /pid 2940
+成功: 已终止 PID 为 2940 的进程
+然后重新连接shadowsocks， 即可解决了问题。
