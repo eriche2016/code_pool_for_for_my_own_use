@@ -1,9 +1,3 @@
--- input 
---  a: bz * aDim 
---  b: bz * L * bDim
--- out: bz * L 
---  out_k = a * weight * b[{}, k, {}] + bias 
--- see image caption with semantic attention 
 local BilinearD3, parent = torch.class('nn.BilinearD3', 'nn.Module') 
 
 function BilinearD3:__init(inputSize1, inputSize2, outputSize, bias) 
@@ -41,15 +35,20 @@ function BilinearD3:updateOutput(input)
     
      -- print(input[2]:size())
 
-    for k = 1, input[2]:size(2) do 
-        local temp = torch.mm(self.weight, input[2]:select(2, k):t()) --  xDim * yDim, yDim * bz 
-        temp:cmul(input[1]:t())  -- input[1]: bz * xDim, temp: xDim * bz 
-        temp = temp:sum(1)  -- xDim
+    for k = 1, input[2]:size(2) do
+        -- input[1]: bz * xDim 
+        -- self.weight: xDim * yDim
+        -- input[2]:select(2, k): bz * yDim 
+        -- temp: (bz * xDim) * (xDim * yDim) = (bz * yDim) 
+        local temp = torch.mm(input[1], self.weight) 
+        -- bz * yDim 
+        temp:cmul(input[2]:select(2, k)) 
+        self.output[{{}, k}] = temp:sum(2)  -- bz 
+
         if self.bias then
-            temp = temp:add(self.bias:expand(input[1]:size(1)))
+            self.output[{{}, k}] = self.output[{{}, k}]:add(self.bias:expand(input[1]:size(1)))
         end 
-        self.output[{{}, k}] = temp:view(-1)
-    end 
+    end
     return self.output
 end 
 
@@ -64,9 +63,8 @@ function BilinearD3:updateGradInput(input, gradOutput)
        
         -- print(gradOutput) -- 80 * 16 
         -- print(self.gradInput) -- 80 * 300, 80 * 16 * 300
-
         for k = 1, gradOutput:size(2) do  
-            local temp = torch.mm(input[2]:select(2, 1), self.weight:t()) 
+            local temp = torch.mm(input[2]:select(2, k), self.weight:t()) 
             temp:cmul(gradOutput:narrow(2, k, 1):expand(self.gradInput[1]:size(1), self.gradInput[1]:size(2)))  
             self.gradInput[1]:add(temp) 
             self.gradInput[2][{{},k, {}}]:addmm(1, input[1], self.weight) 
@@ -96,5 +94,6 @@ function BilinearD3:accGradParameters(input, gradOutput, scale)
 end 
 
 -- we donot need to accumulate parameters when sharing 
-BilinearD3.sharedAccUpdateGradParameters = BilinearD3.accUpdateGradParameters 
+-- BilinearD3.sharedAccUpdateGradParameters = BilinearD3.accUpdateGradParameters 
+
 
