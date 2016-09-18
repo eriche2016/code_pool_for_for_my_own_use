@@ -21,15 +21,20 @@ function ArgMax:updateOutput(input)
    self._value = self._value or input.new()
    self._indices = self._indices or
       (torch.type(input) == 'torch.CudaTensor' and torch.CudaTensor() or torch.LongTensor())
+   -- if input:dim() > self.nInputDim, then dim =self.dim + 1, otherwise, dim = self.dim 
    local dim = (input:dim() > self.nInputDim) and (self.dim + 1) or self.dim
    
+   -- torch.max([resval, resind,]x[,dim]): performs max operation to input tensor x along dim 
+   -- store the value to self._value, corresponds indices to self._indices
    torch.max(self._value, self._indices, input, dim)
+   
    if input:dim() > 1 then
       local idx = self._indices:select(dim, 1)
       self.output:resize(idx:size()):copy(idx)
    else
       self.output:resize(self._indices:size()):copy(self._indices)
    end
+
    return self.output
 end
 
@@ -48,11 +53,14 @@ function ArgMax:type(type)
       -- unnecessary memory allocations.
       local indices
       indices, self._indices = self._indices, nil
+      -- convert the parent of the model to type `type` 
       parent.type(self, type)
       self._indices = indices and indices:long() or nil
    end
+
    if self.asLong then
       self.output = torch.LongTensor()
    end
+
    return self
 end
