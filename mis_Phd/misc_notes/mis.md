@@ -118,3 +118,6 @@ cmd 打开终端：
 ```
 成功: 已终止 PID 为 2940 的进程  
 然后重新连接shadowsocks， 即可解决了问题。  
+
+### tutorials on git command 
+see [tutorials](http://rogerdudler.github.io/git-guide/)
