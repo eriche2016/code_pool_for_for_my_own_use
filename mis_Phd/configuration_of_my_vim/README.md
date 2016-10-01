@@ -1,4 +1,4 @@
 ###Installing command###
 * STEP 1: download .vimrc and vim folder to your home directory home/user_name
-* STEP 2: rename vim/ to be .vim
+* STEP 2: rename vim/ to be .vim/ 
 * open your terminal agiain and see the difference
