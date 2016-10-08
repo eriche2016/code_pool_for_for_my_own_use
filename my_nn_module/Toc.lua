@@ -8,7 +8,7 @@ function Toc:__init(name, comment)
 end
 
 function Toc:updateOutput(input)
-   print("Toc '"..self.name.."' ("..self.comment..") : "..tic_modules[self.name]:time()['real'])
+   print("Toc '"..self.name.."' ("..self.comment..") : "..tic_modules[self.name]:time()['real']*1000 .. "ms")
    self.output = input
    return self.output
 end
