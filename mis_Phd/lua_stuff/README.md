@@ -46,6 +46,7 @@ illustration below
 ```
 
 ```
+z = torch.zeros(2, 4):scatter(2, torch.LongTensor{{3}, {4}}, 1.23)
 3rd ->  0.0000  0.0000  1.2300  0.0000  
 4th ->  0.0000  0.0000  0.0000  1.2300
 [torch.DoubleTensor of size 2x4]
