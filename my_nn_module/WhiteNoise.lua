@@ -1,3 +1,4 @@
+-- Add white noise to the given input
 local WhiteNoise, Parent = torch.class('nn.WhiteNoise', 'nn.Module')
 
 function WhiteNoise:__init(mean, std)
