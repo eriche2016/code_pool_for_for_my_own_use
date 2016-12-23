@@ -121,3 +121,15 @@ cmd 打开终端：
 
 ### tutorials on git command 
 see [tutorials](http://rogerdudler.github.io/git-guide/)
+
+###避免使用windows的编辑工具写Linux的shell脚本
+之所以要这样做， 是因为在windows下编辑脚本文件，上传到linux机器上后，运行时经常碰到这样的错误：XXXX: line xxx: syntax error: unexpected end of file (XXXX是执行的文件名，xxx是出错行数：文件行尾）
+出现这种错误的原因是：DOS下文件和Linux下文件格式差异问题导致的。
+DOS下的文本文件是以\r\n作为换行标志的，表示成十六进制就是0D 0A。而Linux下的文本文件是以\n作为换行标志的，表示成十六进制就是0A。
+DOS格式的文本文件在Linux下，用vi -b方式打开文件，会发现，每行的末尾会带有^M（\r）字符。用vi直接打开文件，在状态位置显示"XXXX" [converted][dos] 8L, 72C，表示是一个dos文件格式，有8行72个字符。解决的方案是： 
+```
+vi XXXX
+:set fileformat=unix
+:wq   存盘退出
+```
+当然，要从根本上解决这个问题，要求我们坚持Linux的编辑工具编写shell脚本。 
