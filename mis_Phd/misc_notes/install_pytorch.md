@@ -7,11 +7,14 @@
 On Linux
 ```bash
 export CMAKE_PREFIX_PATH=[anaconda root directory]
+```
 
-# step 3: Install basic dependencies
+#### step 3: Install basic dependencies
+```bash
 conda install numpy pyyaml mkl setuptools cmake gcc cffi
-
-# step 4: Add LAPACK support for the GPU
+```
+#### step 4: Add LAPACK support for the GPU
+```bash 
 conda install -c soumith magma-cuda80 # or magma-cuda75 if CUDA 7.5
 ```
 
