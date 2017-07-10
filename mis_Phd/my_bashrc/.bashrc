@@ -129,8 +129,9 @@ export LD_LIBRARY_PATH=/home/hxw/torch/install/lib64:$LD_LIBRARY_PATH
 export Protobuf_LIBRARY=/home/hxw/Public/lib/protobuf-3.3.0/bin
 
 # for cudnn6.0 
-export CUDNN_INCLUDE_DIR=/home/hxw/Public/lib/cuda/include/
+export CUDNN_INCLUDE_DIR=/home/hxw/Public/lib/cuda/include
 export CUDNN_LIB_DIR=/home/hxw/Public/lib/cuda/lib64
+export LD_LIBRARY_PATH=/home/hxw/Public/lib/cuda/lib64:$LD_LIBRARY_PATH
 
 # added by Anaconda3 4.4.0 installer
 export PATH="/home/hxw/anaconda3/bin:$PATH"
