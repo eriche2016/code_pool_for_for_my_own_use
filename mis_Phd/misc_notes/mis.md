@@ -138,3 +138,10 @@ vi XXXX
 ## 清理电脑C盘推荐软件
 Dism++软件
 
+
+## 挂载优盘到Unix上去目录/home/hxw/mnt 
+```shell
+sudo mount /dev/ssd1 /home/hxw/mnt 
+```
+
+
