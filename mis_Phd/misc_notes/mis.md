@@ -143,5 +143,10 @@ Dism++软件
 ```shell
 sudo mount /dev/ssd1 /home/hxw/mnt 
 ```
+或者协调挂载
+```shell
+sudo umount /home/hxw/mnt 
+```
+###
 
 
