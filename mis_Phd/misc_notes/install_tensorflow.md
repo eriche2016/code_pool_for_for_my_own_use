@@ -1,3 +1,4 @@
+
 ### install anaconda
 ### create a conda environment named tensorflow to run a version of Python
 ```
@@ -16,3 +17,8 @@
   
  #### now install it. 
  pip install ./Ananaconda_Pytorch_Related/tensorflow_gpu-1.4.0-cp34-cp34m-linux_x86_64.whl
+
+### install tensorflow-gpu on environment python3.6.1 + cuda8.0 + cudnn6 with one command 
+```
+pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.3.0-cp36-cp36m-linux_x86_64.whl
+```
