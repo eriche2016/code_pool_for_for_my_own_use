@@ -1,8 +1,8 @@
-####################### 
-## Install using conda (see https://pytorch.org) 
-#######################
-conda install pytorch torchvision -c pytorch
 
+## Install using conda (see https://pytorch.org) 
+```
+conda install pytorch torchvision -c pytorch
+```
 
 
 
