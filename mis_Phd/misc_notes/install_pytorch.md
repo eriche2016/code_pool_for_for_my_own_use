@@ -16,7 +16,7 @@ conda install -c intel mkl-dnn
 ```
 #### step 4: Add LAPACK support for the GPU
 ```bash 
-conda install -c soumith magma-cuda80 # or magma-cuda75 if CUDA 7.5
+conda install -c pytorch magma-cuda80 # or magma-cuda75 if CUDA 7.5
 ```
 
 #### step 5: Install PyTorch
