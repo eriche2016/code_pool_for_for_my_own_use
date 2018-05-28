@@ -24,6 +24,12 @@ conda install -c pytorch magma-cuda80 # or magma-cuda75 if CUDA 7.5
 ```
 
 #### step 5: Install PyTorch
+get from source 
+```
+git clone --recursive https://github.com/pytorch/pytorch
+cd pytorch 
+```
+
 On Linux
 suggested choice(reference [see here](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)):
 ```bash
