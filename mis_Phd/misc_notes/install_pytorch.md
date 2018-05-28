@@ -11,7 +11,8 @@ export CMAKE_PREFIX_PATH=[anaconda root directory]
 
 #### step 3: Install basic dependencies
 ```bash
-conda install numpy pyyaml mkl setuptools cmake gcc cffi
+conda install numpy pyyaml mkl mkl-include setuptools cmake cffi typing
+conda install -c intel mkl-dnn
 ```
 #### step 4: Add LAPACK support for the GPU
 ```bash 
