@@ -32,6 +32,11 @@ cd pytorch
 
 On Linux
 suggested choice(reference [see here](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)):
+
+```bash 
+python setup.py install
+```
+or 
 ```bash
 python setup.py build develop
 ```
