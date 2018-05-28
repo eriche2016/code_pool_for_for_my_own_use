@@ -1,3 +1,13 @@
+####################### 
+## Install using conda (see https://pytorch.org) 
+#######################
+conda install pytorch torchvision -c pytorch
+
+
+
+
+
+
 ### install pytorch from source
 
 #### step 1: install anaconda (reconmand to choose python3 when run the shell script)
