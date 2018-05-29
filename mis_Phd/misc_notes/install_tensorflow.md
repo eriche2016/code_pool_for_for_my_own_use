@@ -22,9 +22,15 @@
 ```
 pip install https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.3.0-cp36-cp36m-linux_x86_64.whl
 ```
-
-
-or we can download and install. 
+## Last update. 
+### install tensorflow-gpu with python 3.6.4 + cuda8.0 + cudnn7  
 ```
- https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.6.0-cp36-cp36m-linux_x86_64.whl
+ step 1: download tensofrlow gpu, which only support cudnn6.0 
+ https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.3.0-cp36-cp36m-linux_x86_64.whl 
+ 
+ # step 2: since we installed cudnn7, we have to create soft symbol link to cudnn6.0
+ ln -s libcudnn.so.7.1.1  libcudnn.so.6
+ # step 3: install it 
+  pip install tensorflow_gpu-1.3.0-cp36-cp36m-linux_x86_64.whl
+ 
 ```
