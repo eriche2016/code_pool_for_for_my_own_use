@@ -106,4 +106,4 @@ conda install pytorch torchvision cudatoolkit=9.2 -c pytorch
 ```
 [ref 1: conda environments setting](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#macos-and-linux)
 
-[ref_2: conda cheet sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
+[ref 2: conda cheetsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
