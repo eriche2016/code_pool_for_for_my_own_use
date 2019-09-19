@@ -71,8 +71,8 @@ conda create --name pytorch1_2 python=3.6
 cd /home/hxw/anaconda3/envs/pytorch1_2
 mkdir -p ./etc/conda/activate.d
 mkdir -p ./etc/conda/deactivate.d
-touch ./etc/conda/activate.d/env_vars.sh
-touch ./etc/conda/deactivate.d/env_vars.sh
+vim ./etc/conda/activate.d/env_vars.sh
+vim ./etc/conda/deactivate.d/env_vars.sh
 ```
 #### Edit ./etc/conda/activate.d/env_vars.sh as follows:
 ```sh 
