@@ -59,3 +59,51 @@ choice 2:
 ```bash
 python setup.py install --user
 ```
+
+### install pytorch1.0 without disturbing the previous installed pytorch0.4 
+In order to use the latest pytorch, I install it using conda. 
+#### create new environment using conda 
+```bash 
+conda create --name pytorch1_2 python=3.6 
+```
+#### save environments for pytroch1_2 
+```bash 
+cd /home/hxw/anaconda3/envs/pytorch1_2
+mkdir -p ./etc/conda/activate.d
+mkdir -p ./etc/conda/deactivate.d
+touch ./etc/conda/activate.d/env_vars.sh
+touch ./etc/conda/deactivate.d/env_vars.sh
+```
+#### Edit ./etc/conda/activate.d/env_vars.sh as follows:
+```sh 
+#!/bin/bash
+
+# for cuda 9.2  
+export LD_LIBRARY_PATH=/usr/local/cuda-9.2/lib64:$LD_LIBRARY_PATH 
+export PATH=/usr/local/cuda-9.2/bin:$PATH
+
+# may change it later 
+# cudnn 
+# export CUDNN_LIB_DIR=/home/hxw/Public/cudnn_v6/cuda/lib64  
+# export CUDNN_INCLUDE_DIR=/home/hxw/Public/cudnn_v6/cuda/include 
+# export LD_LIBRARY_PATH=/home/hxw/Public/cudnn_v6/cuda/lib64:$LD_LIBRARY_PATH
+
+```
+#### Edit ./etc/conda/deactivate.d/env_vars.sh as follows:
+```sh 
+#!/bin/bash 
+
+unset LD_LIBRARY_PATH
+unset PATH
+``` 
+#### testing it 
+When you run ```source activate pytorch1_2```, the environment variables LD_LIBRARY_PATH and PATH are set to the values you wrote into the file. When you run ```source deactivate```, those variables are erased. We can also run ``nvcc --version`` to see cuda version (9.2 now)
+
+#### install pytroch1.2 
+```
+source activate pytorch1_2 
+conda install pytorch torchvision cudatoolkit=9.2 -c pytorch
+```
+[ref 1: conda environments setting](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#macos-and-linux)
+
+[ref_2: conda cheet sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
