@@ -107,3 +107,47 @@ conda install pytorch torchvision cudatoolkit=9.2 -c pytorch
 [ref 1: conda environments setting](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#macos-and-linux)
 
 [ref 2: conda cheetsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
+
+#### compile code from pointnet2
+Recently I tried to compile code from [PointNet2](https://github.com/erikwijmans/Pointnet2_PyTorch) using the following command:
+```
+python setup.py build_ext --inplace
+```
+However, I failed with the following error message outputed by the system(I have checked my conda environment using gcc --version, and it says I am using gcc 4.9): 
+```
+[[B^[[B^[[B^[[B^[[B^[[B/usr/lib/gcc/x86_64-linux-gnu/5/include/avx512fintrin.h(9220): error: argument of type "const void *" is incompatible with
+parameter of type "const float *"
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/avx512fintrin.h(9231): error: argument of type "const void *" is incompatible with parameter of type "const
+ float *"
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/avx512fintrin.h(9244): error: argument of type "const void *" is incompatible with parameter of type "const
+ double *"
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/avx512fintrin.h(9255): error: argument of type "const void *" is incompatible with parameter of type "const
+ double *"
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/avx512fintrin.h(9268): error: argument of type "const void *" is incompatible with parameter of type "const
+ float *"
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/avx512fintrin.h(9279): error: argument of type "const void *" is incompatible with parameter of type "const
+ float *"
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/avx512fintrin.h(9292): error: argument of type "const void *" is incompatible with parameter of type "const
+ double *"
+
+```
+It can be seen that actuallly it is using gcc-5, However, gcc-5 cannot compile the code according to the information from PointNet2. So 
+I again tried to remove gcc-5 from my system using the following command:
+```
+sudo update-alternatives --remove gcc /usr/bin/gcc-5
+```
+and now I compiled the code, it works!!!. 
+
+##### Another solution 
+since I use anconda environment, I can create a envrionments using votenet using command below
+```
+conda env create -f votenet.yaml
+```
+and it will create a envrionment for me named votenet, and then I can perform experiments under this environment by activating it. 
+
