@@ -6,4 +6,4 @@ STEP 3: After having downloaded it, we install it: conda install your_package
 
 Note: (1) If there doesnot exist a module which match our platform or python version, we may go to pypi.org and down load the source files 
 And then unzip it, run command: python setup.py install   
-     (2) We may run command in the terminal under specific conda environment. 
+     (2) We may run all the above commands in the terminal under specific conda environment. 
