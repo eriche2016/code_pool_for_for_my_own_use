@@ -1,0 +1,9 @@
+
+### When the network is way too slow.
+STEP 1: Go to annaconda.org/conda-forge and search the module to be installed in the check box 
+STEP 2: Download the right module, i.e. the module mathes our platform (e.g., linux 64) and the python version (e.g., python 3.7) 
+STEP 3: After having downloaded it, we install it: conda install your_package 
+
+Note: (1) If there doesnot exist a module which match our platform or python version, we may go to pypi.org and down load the source files 
+And then unzip it, run command: python setup.py install   
+     (2) We may run command in the terminal under specific conda environment. 
