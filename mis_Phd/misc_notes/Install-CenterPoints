@@ -11,7 +11,15 @@ sudo chmod a+r /usr/local/cuda/include/cudnn*.h
 sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 ''
 
-2. About spconv
+2. About APex: 
+I canot install it using command 
+""
+pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+""
+So I install it using command (https://github.com/NVIDIA/apex/pull/323): 
+python setup.py install 
+
+3. About spconv
 
 sudo apt-get install libboost-all-dev
 git clone https://github.com/traveller59/spconv.git --recursive
@@ -40,3 +48,5 @@ And now everything works fine!
 python setup.py bdist_wheel 
 
 cd ./dist && pip install *
+
+
