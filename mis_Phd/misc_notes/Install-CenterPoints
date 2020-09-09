@@ -1,0 +1,20 @@
+Problems encountered when install https://github.com/tianweiy/CenterPoint/blob/master/docs/INSTALL.md
+
+1. Install CUDNN 
+STEP 1: 下载cuDNN，解压。
+STEP 2: tar -zxvf cudnn-8.0.2-linux-x64-v7.tgz
+STEP 3: run below commands: 
+``bash 
+sudo cp cuda/include/cudnn*.h /usr/local/cuda/include/
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/
+sudo chmod a+r /usr/local/cuda/include/cudnn*.h
+sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+''
+
+2. About spconv
+
+sudo apt-get install libboost-all-dev
+git clone https://github.com/traveller59/spconv.git --recursive
+cd spconv # && git checkout 7342772 # here I donot have to checkout to ..., since it can already be compiled 
+python setup.py bdist_wheel
+cd ./dist && pip install *
