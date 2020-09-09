@@ -15,6 +15,28 @@ sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 
 sudo apt-get install libboost-all-dev
 git clone https://github.com/traveller59/spconv.git --recursive
-cd spconv # && git checkout 7342772 # here I donot have to checkout to ..., since it can already be compiled 
-python setup.py bdist_wheel
+cd spconv && git checkout 7342772
+
+# NOTE: when runing below command with python3.7 + pytorch1.6, there is no error, 
+when runing python3.6 + pytorch1.1.0,  it may output failure information like 
+```
+-- Found CUDNN: /usr/lib/x86_64-linux-gnu/libcudnn.so  
+-- Found cuDNN: v?  (include: /usr/include, library: /usr/lib/x86_64-linux-gnu/libcudnn.so)
+CMake Error at /home/haval/anaconda3/lib/python3.7/site-packages/torch/share/cmake/Caffe2/public/cuda.cmake:170 (message):
+  PyTorch requires cuDNN 7 and above.
+```
+Please see https://github.com/traveller59/spconv/issues/196 for more details. 
+
+So I read the failure information and found that in cuda8.0, the verion of cudnn information should be checked in file 
+cudnn_verison.h, so I modified the file: 
+/home/lidar/anaconda3/envs/centerpoint/lib/python3.6/site-packages/torch/share/cmake/Caffe2/public/cuda.cmake
+at line 137 from: 
+file(READ $CUDNN_INCLUDE_DIR/cudnn.h CUDNN_HEADER_CONTENTS)
+to:  
+file(READ $CUDNN_INCLUDE_DIR/cudnn_version.h CUDNN_HEADER_CONTENTS)
+
+And now everything works fine!
+
+python setup.py bdist_wheel 
+
 cd ./dist && pip install *
