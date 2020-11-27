@@ -168,3 +168,11 @@ make
 sudo make install
 ```
 Then it is done. 
+
+# Compile ROS tutorials
+ERROR:
+libapr-1.so.0: undefined reference to `uuid_generate@UUID_1.0
+Solution: 
+```
+cp /usr/lib/x86_64-linux-gnu/libuuid.so /home/ps/anaconda3/lib/
+```
