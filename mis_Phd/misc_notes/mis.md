@@ -169,7 +169,7 @@ sudo make install
 ```
 Then it is done. 
 
-# Compile ROS tutorials
+# catkin_make for ROS tutorials (~/overlay_ws)
 ERROR:
 libapr-1.so.0: undefined reference to `uuid_generate@UUID_1.0
 Solution: 
