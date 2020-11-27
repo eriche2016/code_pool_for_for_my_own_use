@@ -149,4 +149,13 @@ sudo umount /home/hxw/mnt
 ```
 ###
 
-
+### Install on ubuntu from .tar.gz2 
+STEP 1: Download: 
+In 
+```
+https://launchpad.net/ubuntu/+source/orocos-bfl/0.8.0-5build1
+```
+Download: 
+```
+orocos-bfl_0.8.0.orig.tar.bz2
+```
