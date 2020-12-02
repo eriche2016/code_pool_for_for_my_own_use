@@ -101,6 +101,10 @@ source ~/.bashrc
 pkg-config --modversion opencv 
 ```
 
+### for opencv4 
+```
+ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2
+```
 ### Install matlab in ubuntu###
 1. install matlab  
 2. open matlab in ubuntu terminal    
