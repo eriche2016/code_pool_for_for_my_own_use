@@ -55,10 +55,24 @@ cd opencv
 mkdir release
 cd release 
 ```
+
 3. cmake  
 ```
 cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/home/hxw/software/opencv -D BUILD_PYTHON_SUPPORT=ON -D PYTHON_EXECUTABLE=/usr/local/lib/python2.7 -D PYTHONINTERP_FOUND=1 ..
 ```
+
+### Possible Issue and Solution:
+When install ippicv_2020_lnx_intel64_20191018_general.tgz, it will fails, we can download: 
+
+```
+https://raw.githubusercontent.com/opencv/opencv_3rdparty/a56b6ac6f030c312b2dce17430eef13aed9af274/ippicv/ippicv_2020_lnx_intel64_20191018_general.tgz
+```
+Then: 
+```
+mv ippicv_2020_lnx_intel64_20191018_general.tgz 7421de0095c7a39162ae13a6098782f9-ippicv_2020_lnx_intel64_20191018_general.tgz
+mv 7421de0095c7a39162ae13a6098782f9-ippicv_2020_lnx_intel64_20191018_general.tgz /home/ps/Public/opencv/.cache/ippicv/
+```
+
 4. make step:
 ```
 make -j8 
