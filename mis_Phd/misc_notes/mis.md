@@ -194,3 +194,17 @@ Solution:
 ```
 cp /usr/lib/x86_64-linux-gnu/libuuid.so /home/ps/anaconda3/lib/
 ```
+
+### Install tensort 
+Env: Python3.7.9 + cuda10.2 + cudnn7.6 
+
+STEP 1: install pycuda: 
+```
+pip install pycuda
+```
+STEP: Download (file: TensorRT-7.0.0.11.Ubuntu-16.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz) and install tensorrt: 
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-7.0.0.11/lib
+cd python 
+pip install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl
+```
