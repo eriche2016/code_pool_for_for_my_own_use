@@ -208,3 +208,20 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-7.0.0.11/lib
 cd python 
 pip install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl
 ```
+
+### misc 
+When I reopen the computer, the resolution of this computer are very
+low, e.g., the fonts of  the computer are versy  blurring and enlarged. 
+(I guess the software has been updated)
+In  case I  come across the problem  in the future, the following solutions
+can be applied. 
+STEP 1: 
+press CTRL + ALT F1  to enter tty
+STEP 2: 
+sudo service lightdm stop 
+STEP 3, check whether nouveau has been stoped, no output means stoped,
+otherwise, stop it:
+lsmodd  |  grep  nouveaau  
+STEP 4: 
+sudo ./cuda_10.2.89_440.33.01_linux.run 
+accept -> Then uncheck all the other options except driver  -> Install it
