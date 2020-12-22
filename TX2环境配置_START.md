@@ -1,7 +1,8 @@
+# TX2 环境配置: PyTorch + Spconv + Openpc_det 
 
-NOTES when installing pytorch and openpc_det on TX2 
+## NOTES when installing pytorch and openpc_det on TX2
 
-## Update Python3.5 to Python3.6 in ubuntu 
+### Update Python3.5 to Python3.6 in ubuntu 
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa 
 sudo apt-get update 
@@ -14,7 +15,7 @@ sudo apt-get install python3.6-dev
 pip3 install numpy 
 ```
 
-## Install PyTorch1.3 from source 
+### Install PyTorch1.3 from source 
 ```
 git clone https://github.com/pytorch/pytorch.git 
 cd pytorch 
@@ -31,7 +32,7 @@ sudo nvpmodel -m 0
 sudo jetson_clocks.sh
 ```
 
-### Important  NOTES 
+#### Important  NOTES 
 Apply following changes before continue
 CmakeLists.txt : Change NCCL to 'Off' on line 142
 setup.py: Add ```cmake_cache_vars['USE_NCCL'] = False``` below line 394. 
@@ -67,7 +68,7 @@ vim /etc/fstab
 # comment swapfile line 
 ```
 
-## Install torchvision 
+### Install torchvision 
 ```
 cd ~/thirdparty 
 git clone https://github.com/pytorch/vision 
@@ -78,7 +79,7 @@ sudo python3 setup.py install
 ```
 
 
-## Install numba 
+### Install numba 
 NOTE: 
 ```
 llvm version: 8.0 
@@ -87,22 +88,22 @@ numba: must be 0.48.0 (pip3 install numba==0.48.0)
 ```
 
 
-## Install spconv 
-### STEP 1: clone 
+### Install spconv 
+#### STEP 1: clone 
 ```
 cd hf3d_helper/  
 git clone https://github.com/traveller59/spconv.git --recursive 
 cd spconv 
 ``` 
-### STEP 2: install boost 
+#### STEP 2: install boost 
 ```
 sudo apt-get install libboost-all-dev 
 ```
-### STEP 3: make sure cmake version > 3.13.2, otherwise re-install it 
+#### STEP 3: make sure cmake version > 3.13.2, otherwise re-install it 
 ```
 cmaker --version 
 ```
-### STEP 4: modify setup.py 
+#### STEP 4: modify setup.py 
 ```
 vim setup.py 
 ```
@@ -125,13 +126,13 @@ just before:
 
 ```subprocess.check_call(['cmake', ext.sourcedir] + cmake_args, cwd=self.build_temp, env=env)```
 
-### STEP 5: building it
+#### STEP 5: building it
 
 ```
 sudo python setup.py bdist_wheel 
 ```
 
-### STEP 6: install the wheel 
+#### STEP 6: install the wheel 
 
 ```
 cd dist/ 
@@ -139,7 +140,7 @@ pip3 install spconv-1.2.1-cp36-cp36m-linux_aarch64.whl
 ```
  
 
-## misc: 
+### misc: 
 If storage is not enough, then we can delelte the Trash. Also note that delete the hidden trash may also give us much free space: 
 
 ```
@@ -152,7 +153,7 @@ check free space
 df -lh 
 ```
 
-## Install scikit-image 
+### Install scikit-image 
 Must first install python-skimage 
 
 ```
@@ -160,8 +161,9 @@ sudo apt-get install python-skimage
 pip3 install scikit-image 
 ```
 
-## After all the above is completed, now we can install Hongfeng_Lidar_Det-main 
+### After all the above is completed, now we can install Hongfeng_Lidar_Det-main 
 ```
 cd ~/Hongfeng_Lidar_Det-main 
 python setup.py develop 
 ```
+
