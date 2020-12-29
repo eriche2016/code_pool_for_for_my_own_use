@@ -208,6 +208,32 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-7.0.0.11/lib
 cd python 
 pip install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl
 ```
+## Install labelme
+When I install Label me using command below 
+```
+pip install labelme 
+```
+*NOTE: we may also need to install [zlib-1.2.9.tar.gz](https://www.zlib.net/fossils/) using command below
+```
+tar xvf zlib-1.2.9.tar.gz
+cd zlib-1.2.9/
+./configure
+make
+sudo make install
+```
+activate it, 
+```
+labelme 
+```
+Then it will output error messages relating to qt like 
+```
+could not load Qt platform plugin xcb even though it was found
+QObject::moveToThread: Current thread is not the object's thread . Cannot move to target thread
+```
+I searched and found the following [solutions](https://forum.qt.io/topic/119109/using-pyqt5-with-opencv-python-cv2-causes-error-could-not-load-qt-platform-plugin-xcb-even-though-it-was-found/9), which solve the issue. 
+```
+pip install opencv-python-headles
+```
 
 ### misc 
 When I reopen the computer, the resolution of this computer are very
@@ -225,3 +251,5 @@ lsmodd  |  grep  nouveaau
 STEP 4: 
 sudo ./cuda_10.2.89_440.33.01_linux.run 
 accept -> Then uncheck all the other options except driver  -> Install it
+
+
