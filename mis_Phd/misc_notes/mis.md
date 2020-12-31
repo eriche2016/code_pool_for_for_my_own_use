@@ -1,4 +1,5 @@
-# Notes on knowledge on computer stuff
+# Notes on Installation of Softwares 
+
 ## show package path installed in torch
 In order to show the package where you store by using `luarocks install pack_name` command,  using:  
 `luarocks show pack_name`
@@ -252,4 +253,49 @@ STEP 4:
 sudo ./cuda_10.2.89_440.33.01_linux.run 
 accept -> Then uncheck all the other options except driver  -> Install it
 
+### ROS + CV2 + CV_Bridge on Ubuntu 16.04 
+NOTE 1 On CV2: 解决Anaconda 与 ROS 冲突
+删除 anaconda envs 环境变量中的 ros 相关路径
+```
+import sys
+ros_cv2_path = '/opt/ros/kinetic/lib/python2.7/dist-packages'
+if ros_cv2_path in sys.path: sys.path.remove(ros_cv2_path)
+```
+注：此方法单次有效，即每次执行 import cv2之前，都要先执行此操作
 
+NOTE 2 On CV_Bridge: 
+```
+
+mkdir catkin_workspace
+cd catkin_workspace
+catkin init
+# Instruct catkin to set cmake variables
+ catkin config -DPYTHON_EXECUTABLE=/home/ps/anaconda3/envs/openpc_det/bin/python3.7 -DPYTHON_INCLUDE_DIR=/home/ps/anaconda3/envs/openpc_det/include/python3.7m -DPYTHON_LIBRARY=/home/ps/anaconda3/envs/openpc_det/lib/libpython3.7m.so
+# Instruct catkin to install built packages into install place. It is $CATKIN_WORKSPACE/install folder
+catkin config --install
+# Clone cv_bridge src
+git clone https://github.com/ros-perception/vision_opencv.git src/vision_opencv
+# Find version of cv_bridge in your repository
+apt-cache show ros-kinetic-cv-bridge | grep Version
+    Version: 1.12.8-0xenial-20180416-143935-0800
+# Checkout right version in git repo. In our case it is 1.12.8
+cd src/vision_opencv/
+git checkout 1.12.8
+cd ../../
+# run the following command, otherwise it will complain ```Could not find the following Boost libraries: boost python3
+cd /usr/lib/x86_64-linux-gnu
+# create symbolic link (I only have libboost_python-py35.so on my machine.)
+sudo ln -s libboost_python-py35.so libboost_python3.so
+sudo ln -s libboost_python-py35.a libboost_python3.a 
+cd /home/ps/hxw_projects/Hongfeng_LaneDet/ros_cv_bridge_helper/catkin_workspace 
+# flag should be set, otherwise it will cause errors 
+catkin build cv_bridge  -DCMAKE_BUILD_TYPE=Release -DSETUPTOOLS_DEB_LAYOUT=OFF
+# Now we can extend the environment variables and use it in other working space 
+# Extend environment with new package
+source install/setup.bash --extend
+# test it 
+python
+>>> import cv_bridge
+>>> cv_bridge.__path__
+
+```
