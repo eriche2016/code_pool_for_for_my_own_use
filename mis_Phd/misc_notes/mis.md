@@ -320,8 +320,19 @@ after line:
 ```
 set(CATKIN_TOPLEVEL TRUE)
 ```
-
-STEP 2: Building for python3, and cmake it 
+STEP 2: Modify geometry2/tf2/CMakeLists.txt, at the end of the file, replace 
+```
+catkin_add_gtest(test_transform_datatypes test/test_transform_datatypes.cpp)
+target_link_libraries(test_transform_datatypes tf2  ${console_bridge_LIBRARIES})
+add_dependencies(test_transform_datatypes ${catkin_EXPORTED_TARGETS})
+```
+with 
+```
+catkin_add_gtest(test_transform_datatypes2 test/test_transform_datatypes.cpp)
+target_link_libraries(test_transform_datatypes2 tf2  ${console_bridge_LIBRARIES})
+add_dependencies(test_transform_datatypes2 ${catkin_EXPORTED_TARGETS})
+```
+STEP 3: Building for python3, and cmake it 
 
 ```
 export ROS_PYTHON_VERSION=3
