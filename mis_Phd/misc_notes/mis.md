@@ -299,3 +299,31 @@ python
 >>> cv_bridge.__path__
 
 ```
+
+
+### Install TF for python3 on Ubuntu 16.04
+Note: activate openpc_det environment which uses python3 
+``` 
+git clone https://github.com/ros/geometry (branch: noetic-devel) 
+git clone https://github.com/ros/geometry2 (branch: noetic-devel)
+```
+STEP 1: must use c++11 to build it, otherwise cannot pass. 
+To avoid adding building option in every file just open: 
+```
+sudo vim /opt/ros/kinetic/share/catkin/cmake/toplevel.cmake
+```
+adding the following line: 
+```
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+```
+after line: 
+```
+set(CATKIN_TOPLEVEL TRUE)
+```
+
+STEP 2: Building for python3, and cmake it 
+
+```
+export ROS_PYTHON_VERSION=3
+catkin_make
+```
