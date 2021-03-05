@@ -341,7 +341,9 @@ catkin_make
 
 
 ### Building [livox ros driver](https://github.com/Livox-SDK/livox_ros_driver) 
+
 STEP 1: Livox-SDK
+
 STEP 2: Install livox ros diver 
 issue: 
 ```
