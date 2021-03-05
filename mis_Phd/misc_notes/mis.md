@@ -338,3 +338,17 @@ STEP 3: Building for python3, and cmake it
 export ROS_PYTHON_VERSION=3
 catkin_make
 ```
+
+
+### Building [livox ros driver](https://github.com/Livox-SDK/livox_ros_driver) 
+STEP 1: Livox-SDK
+STEP 2: Install livox ros diver 
+issue: 
+```
+ No rule to make target '/usr/lib/x86_64-linux-gnu/libproj.so', needed by '/home/ps/hxw_projects/ZGongProject/ws_livox/devel/lib/livox_ros_driver/livox_ros_driver_node'.
+```
+solution: 
+```
+sudo ln -s  /usr/lib/x86_64-linux-gnu/libproj.so.9 /usr/lib/x86_64-linux-gnu/libproj.so 
+```
+Then remove devel/ and build/ and then ```catkin_make``` again
