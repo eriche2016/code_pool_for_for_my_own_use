@@ -353,4 +353,7 @@ solution:
 ```
 sudo ln -s  /usr/lib/x86_64-linux-gnu/libproj.so.9 /usr/lib/x86_64-linux-gnu/libproj.so 
 ```
+
+If there doest exist ```libproj.so.9``` in  ```/usr/lib/x86_64-linux-gnu/```, just 
+install with ```sudo apt-get install libproj-dev```
 Then remove devel/ and build/ and then ```catkin_make``` again
