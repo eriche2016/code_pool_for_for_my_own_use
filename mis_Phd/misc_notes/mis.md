@@ -357,3 +357,44 @@ sudo ln -s  /usr/lib/x86_64-linux-gnu/libproj.so.9 /usr/lib/x86_64-linux-gnu/lib
 If there doest exist ```libproj.so.9``` in  ```/usr/lib/x86_64-linux-gnu/```, just 
 install with ```sudo apt-get install libproj-dev```
 Then remove devel/ and build/ and then ```catkin_make``` again
+
+
+### Install Ceres
+
+STEP 1: 
+It requires Eighen 3.3 or later. However my computer has Eighen 3.2. 
+So we will first need to remove Eighen 3.2 and then install Eighen 3.3. 
+```
+locate eigen3 
+sudo rm -rf /usr/include/eigen3 /usr/lib/cmake/eigen3 /usr/share/doc/libeigen3-dev /usr/share/pkgconfig/eigen3.pc /var/lib/dpkg/info/libeigen3-dev.list /var/lib/dpkg/info/libeigen3-dev.md5sums ***
+```
+
+build it 
+```
+unzip eigen-3.3.8.zip
+cd eigen-3.3.8 
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+sudo ldconfig -v
+```
+
+apt-get安装eigen3的路径为 /usr/include/eigen3 ，这里也保持一直；此外，需使用下面命令将Eigen映射到 /usr/include 路径下，因为在很多程序中include时经常使用#include <Eigen/Dense>而不是使用#include <eigen3/Eigen/Dense>，不映射的话一些程序在编译时会因找不到Eigen/Dense而报错。
+```
+sudo cp -r /usr/local/include/eigen3 /usr/include/eigen3 
+sudo ln -s /usr/include/eigen3/Eigen /usr/include/Eigen
+```
+STEP 3: Install Ceres 
+
+```
+tar zxf ceres-solver-2.0.0.tar.gz
+mkdir ceres-bin
+cd ceres-bin/
+cmake ../ceres-solver-2.0.0 
+make -j3 
+sudo make install 
+```
+
+
