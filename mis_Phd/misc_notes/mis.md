@@ -371,8 +371,8 @@ sudo rm -rf /usr/include/eigen3 /usr/lib/cmake/eigen3 /usr/share/doc/libeigen3-d
 
 build it 
 ```
-unzip eigen-3.3.8.zip
-cd eigen-3.3.8 
+unzip eigen-3.3.9.zip
+cd eigen-3.3.9 
 mkdir build
 cd build
 cmake ..
@@ -397,4 +397,19 @@ make -j3
 sudo make install 
 ```
 
+### Building Eigen by specifying the installing dir  
 
+On my machine I have installled Eigen3.3.8 in the /usr/ folder, However, there is a project which requires a lower version of Eigen to Build. 
+So I download the Eigen3.2 and install it in the local dir by
+```
+
+mkdir build 
+mkdir install # where to install 
+cd build 
+cmake ..
+DESTDIR=../install/ make install # now it has been installed in ../install/ 
+```
+When use it to build other project, set to path in **terminal**:
+```
+
+```
