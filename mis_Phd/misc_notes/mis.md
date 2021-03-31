@@ -413,3 +413,9 @@ When use it to build other project, set to path in **terminal**:
 ```
 
 ```
+
+### Closing firewall on my computer when connecting lidar 
+
+```
+sudo systemctl stop firewalld.service 
+```
