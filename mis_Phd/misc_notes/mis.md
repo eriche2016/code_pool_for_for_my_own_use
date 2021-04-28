@@ -419,3 +419,23 @@ When use it to build other project, set to path in **terminal**:
 ```
 sudo systemctl stop firewalld.service 
 ```
+
+
+### Run command in bash file 
+```
+A; B # run A and then B regardless of sucess of A 
+A && B Run if and only if A successed 
+A || B # run B if and only if A failed 
+A & run A in background 
+```
+
+### No inputting password for sudo command 
+Use the NOPASSWD directive in your ```/etc/sudoers``` file 
+If your user name is ```user```, and your host is called ```host```, then you can add these lines to ```/etc/sudoers```:
+
+```
+user host = (root) NOPASSWD: /sbin/shutdown 
+```
+
+This will allow the user ```user``` to run command ```shutdown``` on host without entering password, and all other sudoed commands will still require a password. 
+
