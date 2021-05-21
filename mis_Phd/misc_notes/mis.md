@@ -233,7 +233,7 @@ QObject::moveToThread: Current thread is not the object's thread . Cannot move t
 ```
 I searched and found the following [solutions](https://forum.qt.io/topic/119109/using-pyqt5-with-opencv-python-cv2-causes-error-could-not-load-qt-platform-plugin-xcb-even-though-it-was-found/9), which solve the issue. 
 ```
-pip install opencv-python-headles
+pip install opencv-python-headless
 ```
 
 ### misc 
