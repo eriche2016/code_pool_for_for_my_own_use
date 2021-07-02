@@ -439,3 +439,16 @@ user host = (root) NOPASSWD: /sbin/shutdown
 
 This will allow the user ```user``` to run command ```shutdown``` on host without entering password, and all other sudoed commands will still require a password. 
 
+
+
+### rosbag里面包含多个点云话题，bag_to_pcd失效（无法指定话题）
+命令：
+```
+  rosrun pcl_ros bag_to_pcd my_data.bag /livox/A data/
+```
+主要原因是bag_to_pcd会将所有bag中pointcloud2格式的点云切割出来，而不管指定话题是哪一个。
+错误信息在[这里](https://github.com/ros-perception/perception_pcl/pull/215)。
+为了解决上述问题，有如下两种解决方案：
+方法1： 安装jarvisschultz:melodic-devel分支
+方法2：写一个python 脚本，订阅点云话题，在回调函数中保存点云。
+
