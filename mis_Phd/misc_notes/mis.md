@@ -197,6 +197,8 @@ cp /usr/lib/x86_64-linux-gnu/libuuid.so /home/ps/anaconda3/lib/
 ```
 
 ### Install tensort 
+
+Conda Env: openpc_det
 Env: Python3.7.9 + cuda10.2 + cudnn7.6 
 
 STEP 1: install pycuda: 
@@ -209,6 +211,15 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-7.0.0.11/lib
 cd python 
 pip install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl
 ```
+Note that we have to add 
+
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-7.0.0.11/lib
+```
+
+into ```~/.bashrc``` file  
+
+Conda env: Adas_Lan_Obj_TrafficLgt 
 
 Env: Python3.8.10 + cuda10.2 + cudnn8.2.0 
 
@@ -248,6 +259,9 @@ if not set it, command ```import torch2trt``` will give errors like
 ImportError: libnvinfer.so.8: cannot open shared object file: No such file or directory 
 ```
 actually libnvinfer.so.8 sites at folder: TensorRT-8.0.1.6/lib
+
+Also note that please donot delete previous line in ```~/.bashrc```: ```export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-7.0.0.11/lib```, since 
+in conda environment ```openpc_det```, the project depends on it. 
 
 ### Install labelme
 When I install Label me using command below 
