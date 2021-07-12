@@ -188,7 +188,7 @@ sudo make install
 ```
 Then it is done. 
 
-# catkin_make for ROS tutorials (~/overlay_ws)
+### catkin_make for ROS tutorials (~/overlay_ws)
 ERROR:
 libapr-1.so.0: undefined reference to `uuid_generate@UUID_1.0
 Solution: 
@@ -203,13 +203,53 @@ STEP 1: install pycuda:
 ```
 pip install pycuda
 ```
-STEP: Download (file: TensorRT-7.0.0.11.Ubuntu-16.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz) and install tensorrt: 
+STEP 2: Download (file: TensorRT-7.0.0.11.Ubuntu-16.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz) and install tensorrt: 
 ```
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-7.0.0.11/lib
 cd python 
 pip install tensorrt-7.0.0.11-cp37-none-linux_x86_64.whl
 ```
-## Install labelme
+
+Env: Python3.8.10 + cuda10.2 + cudnn8.2.0 
+
+STEP 1: install cudnn(file: cudnn-10.2-linux-x64-v8.2.0.53.tgz)
+
+ref: https://zongxp.blog.csdn.net/article/details/86098833?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
+
+STEP 2: install pycuda: 
+```
+pip install `pycuda<2021.1`
+```
+STEP 3: Download (file: TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2.tar.gz) and install tensorrt: 
+``` 
+tar xzvf TensorRT-8.0.1.6.Linux.x86_64-gnu.cuda-10.2.cudnn8.2.tar.gz
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-8.0.1.6/lib
+cd python 
+pip install tensorrt-8.0.1.6-cp39-none-linux_x86_64.whl
+```
+
+Note tensorrt7.0 does not contain `.whl` file for python3.8 
+
+STEP 4: Install torch2trt 
+```
+git clone https://github.com/NVIDIA-AI-IOT/torch2trt
+cd torch2trt
+python setup.py install
+```
+
+Make sure to set the LD_LIBRARY_PATH correctly in .bashrc: 
+```
+vim ~/.bashrc 
+# add the following line in .bashrc 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ps/Public/TensorRT-8.0.1.6/lib
+```
+if not set it, command ```import torch2trt``` will give errors like 
+```
+ImportError: libnvinfer.so.8: cannot open shared object file: No such file or directory 
+```
+actually libnvinfer.so.8 sites at folder: TensorRT-8.0.1.6/lib
+
+### Install labelme
 When I install Label me using command below 
 ```
 pip install labelme 
