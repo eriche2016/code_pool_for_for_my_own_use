@@ -47,6 +47,7 @@ python setup.py build_ext
 
 
 注意：在Linux系统下运行加密狗，要找到加密狗，需要开启权限，方法如下：
+
 STEP 1:创建文件`sudo gedit /etc/udev/rules.d/Syu3.rules`, 添加如下：
 ```
 SUBSYSTEM=="input", GROUP="input", MODE="0666"
